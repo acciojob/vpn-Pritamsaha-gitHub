@@ -125,24 +125,37 @@ public class ConnectionServiceImpl implements ConnectionService {
                 if (code.equals(CountryName.JPN.toCode())){
                     newCountry=CountryName.JPN.toString();
                 }
-                User newUser=connect(senderId,newCountry);
-                if (newUser.getConnected()==false){
+                try {
+                    User updatesender=connect(senderId,newCountry);
+                    return updatesender;
+                }catch (Exception e){
                     throw new Exception("Cannot establish communication");
-                }else{
-                    return newUser;
                 }
+
+//                User newUser=connect(senderId,newCountry);
+//                if (newUser.getConnected()==false){
+//                    throw new Exception("Cannot establish communication");
+//                }else{
+//                    return newUser;
+//                }
             }
         }else{
             if (receiver.getCountry().equals(sender.getCountry())){//sender and receiver country matched
                 return sender;
             }else{
                 String receivercountry=receiver.getCountry().getCountryName().toString();
-                User updatesender=connect(senderId,receivercountry);
+               // User updatesender=connect(senderId,receivercountry);
 
-                if (updatesender.getConnected()==false){
+//                if (updatesender.getConnected()==false){
+//                    throw new Exception("Cannot establish communication");
+//                }else{
+//                    return updatesender;
+//                }
+                try {
+                    User updateSender=connect(senderId,receivercountry);
+                    return updateSender;
+                }catch (Exception e){
                     throw new Exception("Cannot establish communication");
-                }else{
-                    return updatesender;
                 }
             }
         }
