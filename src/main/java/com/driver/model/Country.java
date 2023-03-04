@@ -9,9 +9,10 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Enumerated()
     private CountryName countryName;
 
-    private String code;
+    private String Code;
 
     @ManyToOne
     @JoinColumn
@@ -26,7 +27,7 @@ public class Country {
 
     public Country(CountryName countryName, String code, ServiceProvider serviceProvider, User user) {
         this.countryName = countryName;
-        this.code = code;
+        Code = code;
         this.serviceProvider = serviceProvider;
         this.user = user;
     }
@@ -48,11 +49,11 @@ public class Country {
     }
 
     public String getCode() {
-        return code;
+        return Code;
     }
 
-    public void setCodes(String code) {
-        this.code = code;
+    public void setCode(String code) {
+        Code = code;
     }
 
     public ServiceProvider getServiceProvider() {
