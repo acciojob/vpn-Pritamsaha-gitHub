@@ -81,6 +81,7 @@ public class AdminServiceImpl implements AdminService {
                 country.setCodes(CountryName.JPN.toCode());
             }
             //setup serviceProvider
+            country.setServiceProvider(serviceProvider);
             List<Country>countryList=serviceProvider.getCountryList();
             countryList.add(country);
             serviceProvider.setCountryList(countryList);
