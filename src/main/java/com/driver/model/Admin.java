@@ -7,23 +7,24 @@ import java.util.List;
 @Entity
 @Table(name = "admin")
 public class Admin {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String username;
+
     private String password;
 
-    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-    private List<ServiceProvider> serviceProviders =new ArrayList<>();
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    private List<ServiceProvider> serviceProviders = new ArrayList<>();
 
-    public Admin() {
-    }
-
-    public Admin(String username, String password, List<ServiceProvider> serviceProviders) {
+    public Admin(String username, String password) {
         this.username = username;
         this.password = password;
-        this.serviceProviders = serviceProviders;
+    }
+
+    public Admin() {
     }
 
     public int getId() {
